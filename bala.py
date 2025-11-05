@@ -1,6 +1,6 @@
 import pygame
 
-COLOR_BALA = (255, 255, 0)
+COLOR_BALA = (255, 255, 0) # Amarillo
 ANCHO_BALA = 5
 ALTO_BALA = 15
 
@@ -25,4 +25,4 @@ class Bala:
         return (self.y + ALTO_BALA) < 0
         
     
-        pass
+        

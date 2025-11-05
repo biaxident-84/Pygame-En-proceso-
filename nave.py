@@ -7,15 +7,16 @@ ALTO_NAVE = 50
 
 class Nave_jugador:
     # Como nace el objeto
-    def __init__(self, x_inicial, y_inicial, velocidad, limite_izq, limite_der):
+    def __init__(self, image_path, x_inicial, y_inicial, velocidad, limite_izq, limite_der):
         # Estado interno (atributos)
+        self.image = pygame.image.load(image_path)
         self.x = x_inicial
         self.y = y_inicial
         self.velocidad = velocidad
         self.limite_izq = limite_izq
         self.limite_der = limite_der
         # Rectangulo para representar la nave
-        self.rect = pygame.Rect(self.x, self.y, ANCHO_NAVE, ALTO_NAVE)
+        #self.rect = pygame.Rect(self.x, self.y, ANCHO_NAVE, ALTO_NAVE)
         self.balas = [] # Lista para almacenar balas activas
     
     def manejar_input(self):
@@ -39,12 +40,13 @@ class Nave_jugador:
             self.x = self.limite_der
 
         # Actualizar el rect para que siga en x. y
-        self.rect.topleft = (self.x, self.y)
+        #self.rect.topleft = (self.x, self.y)
 
     # Dibujar la figura despues del update
     def dibujar(self, surface):
         """Dibuja la nave como un rectángulo"""
-        pygame.draw.rect(surface, COLOR_NAVE, self.rect)
+        #pygame.draw.rect(surface, COLOR_NAVE, self.rect)
+        surface.blit(self.image, (self.x, self.y))
         # Mas adelante esto será una imagen
         for bala in self.balas:
             bala.dibujar(surface)
@@ -68,4 +70,4 @@ class Nave_jugador:
         nueva_bala = Bala(x_bala, y_bala, velocidad=8)
         self.balas.append(nueva_bala)
         
-        pass
+        
